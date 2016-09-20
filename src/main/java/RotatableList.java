@@ -10,33 +10,13 @@ public class RotatableList extends ArrayList {
     }
 
     public void rotateBy(int k) {
-//        for (int i = 0; i < list.getItemCount(); i++) {
-//            Object temp = list.getItem(i);
-//            list.add(list.getItem(k), i);
-//            k++;
-//            if (k == list.getItemCount() - 1) {
-//                int kCopy = k;
-//
-//            }
-//        }
-        int kAgain = k;
-        int i = 0;
-        do {
-            Object temp = this.get(i);
-            this.remove(i);
-            if (k == 0)
-                this.add(i, this.get(k));
-            else
-                this.add(i, this.get(k-1));
-            this.remove(k);
-            this.add(k, temp);
-            i++;
-            k++;
-            if (i == this.size() - 1)
-                i = 0;
-            if (k == this.size() - 1)
-                k = 0;
-        } while (k != kAgain);
+        Object[] toBeRotated = new Object[k];
+        for (int i = 0; i < k; i++) {
+            toBeRotated[i] = this.get(0);
+            this.remove(0);
+        }
+        for (Object o : toBeRotated)
+            this.add(o);
     }
 
     public static void main(String[] args) {
